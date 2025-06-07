@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supply_to_trade/core/base/i_state.dart' show IState;
 
 /// Base class for all custom BLoCs with safe helpers.
+// ignore: strict_raw_type
 abstract class IBloc<E, S extends IState> extends Bloc<E, S> {
   /// Constructor for IBloc
   IBloc(super.initialState);

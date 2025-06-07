@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supply_to_trade/core/base/i_state.dart' show IState;
 
 /// Interface for Cubit
+// ignore: strict_raw_type
 abstract class ICubit<T extends IState> extends Cubit<T> {
   /// Constructor for ICubit
   /// Pass in initial IState class to create

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:supply_to_trade/core/base/i_state.dart' show IState;
 
 /// State management for login
-class LoginState extends IState {
+class LoginState extends IState<LoginState> {
   /// Const constructor for login state
   const LoginState({
     this.email = '',
@@ -45,7 +45,7 @@ class LoginState extends IState {
   }
 
   @override
-  List<Object?> get props => [user, email, password, error, isLoading];
+  List<Object?> get additionalProps => [user, email, password, error];
 
   /// Checks if the user is authenticated
   bool get isAuthenticated => user != null && user!.user != null;

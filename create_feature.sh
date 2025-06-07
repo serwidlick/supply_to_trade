@@ -23,25 +23,40 @@ CAP_FEATURE="$(tr '[:lower:]' '[:upper:]' <<< ${FEATURE_NAME:0:1})${FEATURE_NAME
 
 # Create cubit file
 cat > "$CUBIT_PATH/${FILE_NAME}_cubit.dart" <<EOF
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/${FILE_NAME}_state.dart';
+import 'package:supply_to_trade/core/base/i_cubit.dart' show ICubit;
+import 'package:supply_to_trade/features/${FEATURE_NAME}/data/${FEATURE_NAME}_state.dart'
+    show ${CAP_FEATURE}State;
 
-class ${CAP_FEATURE}Cubit extends Cubit<${CAP_FEATURE}State> {
-  ${CAP_FEATURE}Cubit() : super(${CAP_FEATURE}State());
+/// Cubit for the ${CAP_FEATURE} feature.
+class ${CAP_FEATURE}Cubit extends ICubit<${CAP_FEATURE}State> {
+/// Const constructor for ${CAP_FEATURE} cubit
+  ${CAP_FEATURE}Cubit() : super(const ${CAP_FEATURE}State());
 }
 EOF
 
 # Create state file (in data/)
 cat > "$DATA_PATH/${FILE_NAME}_state.dart" <<EOF
-class ${CAP_FEATURE}State {
-  final bool isLoading;
+import 'package:supply_to_trade/core/base/i_state.dart' show IState;
 
-  const ${CAP_FEATURE}State({this.isLoading = false});
+/// State for the ${CAP_FEATURE} feature.
+class ${CAP_FEATURE}State extends IState<${CAP_FEATURE}State> {
+/// Const constructor for ${CAP_FEATURE} state
+const ${CAP_FEATURE}State({super.isLoading = false});
 
+  @override
   ${CAP_FEATURE}State copyWith({bool? isLoading}) {
     return ${CAP_FEATURE}State(
       isLoading: isLoading ?? this.isLoading,
     );
+  }
+
+  @override
+  List<Object?> get additionalProps => [];
+
+  @override
+  ${CAP_FEATURE}State reset() {
+    // TODO:  implement reset
+    throw UnimplementedError();
   }
 }
 EOF
@@ -50,7 +65,9 @@ EOF
 cat > "$PRESENTATION_PATH/${FILE_NAME}_page.dart" <<EOF
 import 'package:flutter/material.dart';
 
+/// Page for the ${CAP_FEATURE} feature.
 class ${CAP_FEATURE}Page extends StatelessWidget {
+/// Const constructor for ${CAP_FEATURE} page
   const ${CAP_FEATURE}Page({super.key});
 
   @override
