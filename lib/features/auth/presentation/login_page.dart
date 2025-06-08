@@ -46,6 +46,17 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Column(
                         children: [
+                          TextButton(
+                            onPressed: () => context.go('/dashboard'),
+                            child: Text(
+                              'bypass login',
+                              style: TextStyle(
+                                color: colours.primary,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
                           const Spacer(flex: 2),
                           _buildHeader(colours),
                           const Spacer(flex: 2),
