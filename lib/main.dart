@@ -1,29 +1,32 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supply_to_trade/features/auth/cubit/login_cubit.dart';
-import 'package:supply_to_trade/features/auth/presentation/login_page.dart';
+import 'package:flutter/services.dart';
+import 'package:supply_to_trade/core/routing/app_router.dart';
+import 'package:supply_to_trade/shared/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  runApp(const SupplyToTradeApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/// The main application widget for the Supply to Trade app.
+class SupplyToTradeApp extends StatelessWidget {
+  /// Creates an instance of [SupplyToTradeApp].
+  const SupplyToTradeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginCubit>(
-      create: (_) => LoginCubit(),
-      child: MaterialApp(
-        title: 'Supply2Trade Enhanced',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: const LoginPage(),
-      ),
+    return MaterialApp.router(
+      title: 'Supply2Trade Enhanced',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
+      routerConfig: appRouter,
     );
   }
 }
