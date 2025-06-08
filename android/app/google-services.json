@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "172304756434",
+    "project_id": "supply2trade-48690",
+    "storage_bucket": "supply2trade-48690.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172304756434:android:6e590bf88387bf0052870b",
+        "android_client_info": {
+          "package_name": "com.example.supply_to_trade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7r6UrwOeshBB20_E2eh4fg6z4YxGd8E0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

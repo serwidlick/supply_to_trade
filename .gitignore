@@ -16,10 +16,6 @@ build/
 .vscode/
 *.iml
 
-# --- Firebase ---
-firebase.json  # Optional — keep if you're using it for config
-.firebase/     # Optional — e.g. Firebase Emulator Suite artifacts
-
 # --- OS-specific ---
 .DS_Store
 Thumbs.db
