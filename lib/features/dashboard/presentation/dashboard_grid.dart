@@ -26,6 +26,7 @@ class DashboardGrid extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         GridView.count(
+          padding: EdgeInsets.zero,
           crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,

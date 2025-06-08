@@ -87,7 +87,7 @@ class _DashboardPageState extends State<DashboardPage>
 
   AppBar _buildAppBar(ColorScheme colours) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: colours.surface,
       elevation: 0,
       flexibleSpace: Container(
         decoration: BoxDecoration(
@@ -105,7 +105,7 @@ class _DashboardPageState extends State<DashboardPage>
       title: FadeTransition(
         opacity: _fadeAnimation,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Hero(
               tag: 'logo',
@@ -118,23 +118,9 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: Text(
-                'Stoke Branch',
-                style: TextStyle(
-                  color: colours.primary,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.5,
-                ),
-              ),
-            ),
           ],
         ),
       ),
-      centerTitle: true,
       actions: [
         FadeTransition(
           opacity: _fadeAnimation,
