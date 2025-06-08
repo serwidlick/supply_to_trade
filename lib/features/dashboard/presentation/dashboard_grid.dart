@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/dashboard_tile.dart';
 
 /// DashboardGrid class used for displaying quick actions in a grid format
 class DashboardGrid extends StatelessWidget {
   /// Creates an instance of [DashboardGrid].
   const DashboardGrid({super.key});
+
+  /// onTap Functionality
+  void onTap(BuildContext context, String path) {
+    context.push(path);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +46,7 @@ class DashboardGrid extends StatelessWidget {
               icon: Icons.request_quote_outlined,
               title: 'Quotes',
               count: '241',
+              onTap: () => onTap(context, '/quotes'),
               gradient: [
                 colours.primary.withValues(alpha: 0.1),
                 colours.primary.withValues(alpha: 0.05),
@@ -49,6 +56,7 @@ class DashboardGrid extends StatelessWidget {
               icon: Icons.shopping_bag_outlined,
               title: 'Orders',
               count: '21',
+              onTap: () => onTap(context, '/orders'),
               gradient: [
                 colours.secondary.withValues(alpha: 0.1),
                 colours.secondary.withValues(alpha: 0.05),
@@ -57,6 +65,7 @@ class DashboardGrid extends StatelessWidget {
             DashboardTile(
               icon: Icons.person_outline,
               title: 'My Info',
+              onTap: () => onTap(context, '/my-information'),
               gradient: [
                 colours.tertiary.withValues(alpha: 0.1),
                 colours.tertiary.withValues(alpha: 0.05),
@@ -65,6 +74,7 @@ class DashboardGrid extends StatelessWidget {
             DashboardTile(
               icon: Icons.headset_mic_outlined,
               title: 'Contact Us',
+              onTap: () => onTap(context, '/contact-us'),
               gradient: [
                 colours.surfaceContainerHighest,
                 colours.surfaceContainerHighest.withValues(alpha: 0.5),

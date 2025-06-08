@@ -7,6 +7,7 @@ class DashboardTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.gradient,
+    this.onTap,
     this.count,
     super.key,
   });
@@ -22,6 +23,9 @@ class DashboardTile extends StatelessWidget {
 
   /// Gradient colors for the tile background.
   final List<Color> gradient;
+
+  /// OnTap Functionality
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +43,7 @@ class DashboardTile extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {
-            ScaffoldMessenger.of(context).clearSnackBars();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('$title tapped'),
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            );
-          },
+          onTap: onTap,
           borderRadius: BorderRadius.circular(16),
           child: Padding(
             padding: const EdgeInsets.all(20),
