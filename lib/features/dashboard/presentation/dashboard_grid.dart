@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/dashboard_tile.dart';
 
+/// DashboardGrid class used for displaying quick actions in a grid format
 class DashboardGrid extends StatelessWidget {
+  /// Creates an instance of [DashboardGrid].
   const DashboardGrid({super.key});
 
   @override
@@ -39,8 +41,8 @@ class DashboardGrid extends StatelessWidget {
               title: 'Quotes',
               count: '241',
               gradient: [
-                colours.primary.withOpacity(0.1),
-                colours.primary.withOpacity(0.05),
+                colours.primary.withValues(alpha: 0.1),
+                colours.primary.withValues(alpha: 0.05),
               ],
             ),
             DashboardTile(
@@ -48,26 +50,24 @@ class DashboardGrid extends StatelessWidget {
               title: 'Orders',
               count: '21',
               gradient: [
-                colours.secondary.withOpacity(0.1),
-                colours.secondary.withOpacity(0.05),
+                colours.secondary.withValues(alpha: 0.1),
+                colours.secondary.withValues(alpha: 0.05),
               ],
             ),
             DashboardTile(
               icon: Icons.person_outline,
               title: 'My Info',
-              count: null,
               gradient: [
-                colours.tertiary.withOpacity(0.1),
-                colours.tertiary.withOpacity(0.05),
+                colours.tertiary.withValues(alpha: 0.1),
+                colours.tertiary.withValues(alpha: 0.05),
               ],
             ),
             DashboardTile(
               icon: Icons.headset_mic_outlined,
               title: 'Contact Us',
-              count: null,
               gradient: [
-                colours.surfaceVariant,
-                colours.surfaceVariant.withOpacity(0.5),
+                colours.surfaceContainerHighest,
+                colours.surfaceContainerHighest.withValues(alpha: 0.5),
               ],
             ),
           ],

@@ -8,7 +8,9 @@ import 'package:supply_to_trade/features/auth/presentation/animated_background.d
 import 'package:supply_to_trade/features/auth/presentation/animated_login_content.dart';
 import 'package:supply_to_trade/features/auth/presentation/login_card.dart';
 
+/// LoginPage class used for the login screen
 class LoginPage extends StatefulWidget {
+  /// Creates an instance of [LoginPage].
   const LoginPage({super.key});
 
   @override
@@ -78,12 +80,12 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                             onLoginPressed: cubit.login,
                             onForgotPasswordPressed: () {
-                              // TODO: Navigate to reset password
+                              // TODO(serwidlick): Navigate to reset password
                             },
                           ),
-                          const Spacer(flex: 1),
+                          const Spacer(),
                           _buildFooter(colours),
-                          const Spacer(flex: 1),
+                          const Spacer(),
                         ],
                       ),
                     ),
@@ -110,13 +112,13 @@ class _LoginPageState extends State<LoginPage> {
               end: Alignment.bottomRight,
               colors: [
                 colours.primary,
-                colours.primary.withOpacity(0.8),
-                colours.secondary.withOpacity(0.6),
+                colours.primary.withValues(alpha: 0.8),
+                colours.secondary.withValues(alpha: 0.6),
               ],
             ),
             boxShadow: [
               BoxShadow(
-                color: colours.primary.withOpacity(0.3),
+                color: colours.primary.withValues(alpha: 0.3),
                 blurRadius: 12,
                 offset: const Offset(0, 12),
               ),
@@ -147,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
           'Sign in to your professional trading account',
           style: TextStyle(
             fontSize: 14,
-            color: colours.onSurface.withOpacity(0.7),
+            color: colours.onSurface.withValues(alpha: 0.7),
             fontWeight: FontWeight.w400,
           ),
           textAlign: TextAlign.center,
@@ -168,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      colours.onSurface.withOpacity(0.2),
+                      colours.onSurface.withValues(alpha: 0.2),
                       Colors.transparent,
                     ],
                   ),
@@ -194,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      colours.onSurface.withOpacity(0.2),
+                      colours.onSurface.withValues(alpha: 0.2),
                       Colors.transparent,
                     ],
                   ),

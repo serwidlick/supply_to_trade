@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// LoginTextField class used for the login page
 class LoginTextField extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final void Function(String) onChanged;
-  final TextInputType? keyboardType;
-  final bool isPassword;
-  final bool? showPassword;
-  final VoidCallback? onTogglePassword;
-
+  /// Creates an instance of [LoginTextField].
   const LoginTextField({
-    super.key,
     required this.label,
     required this.icon,
     required this.onChanged,
@@ -18,7 +11,29 @@ class LoginTextField extends StatelessWidget {
     this.isPassword = false,
     this.showPassword,
     this.onTogglePassword,
+    super.key,
   });
+
+  /// Label for the text field.
+  final String label;
+
+  /// Icon for the text field.
+  final IconData icon;
+
+  /// Callback function to be called when the text changes.
+  final void Function(String) onChanged;
+
+  /// Keyboard type for the text field.
+  final TextInputType? keyboardType;
+
+  /// Whether the text field is for password input.
+  final bool isPassword;
+
+  /// Whether to show the password in the text field.
+  final bool? showPassword;
+
+  /// Callback function to toggle password visibility.
+  final VoidCallback? onTogglePassword;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +41,10 @@ class LoginTextField extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: colours.surface.withOpacity(0.7),
+        color: colours.surface.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: colours.primary.withOpacity(0.12),
+          color: colours.primary.withValues(alpha: 0.12),
           width: 1.5,
         ),
       ),
@@ -45,7 +60,7 @@ class LoginTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(
-            color: colours.onSurface.withOpacity(0.7),
+            color: colours.onSurface.withValues(alpha: 0.7),
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+/// AnimatedLoginContent class used for the login page
 class AnimatedLoginContent extends StatefulWidget {
-  final Widget child;
+  /// Creates an instance of [AnimatedLoginContent].
+  const AnimatedLoginContent({required this.child, super.key});
 
-  const AnimatedLoginContent({super.key, required this.child});
+  /// The child widget to animate.
+  /// This widget will be wrapped in fade and slide transitions.
+  final Widget child;
 
   @override
   State<AnimatedLoginContent> createState() => _AnimatedLoginContentState();
@@ -30,7 +34,7 @@ class _AnimatedLoginContentState extends State<AnimatedLoginContent>
       vsync: this,
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _fadeController, curve: Curves.easeOutCubic),
     );
 

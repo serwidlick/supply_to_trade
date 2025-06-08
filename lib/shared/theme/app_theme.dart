@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supply_to_trade/shared/theme/app_colours_schemes.dart';
 
+/// AppTheme class that provides light and dark theme data for the application.
 class AppTheme {
+  /// Provides light theme data for the application.
   static ThemeData get lightTheme => ThemeData(
     colorScheme: AppColorSchemes.light,
     scaffoldBackgroundColor: AppColorSchemes.light.surface,
@@ -15,17 +17,18 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
-        color: AppColorSchemes.light.onSurface.withOpacity(0.6),
+        color: AppColorSchemes.light.onSurface.withValues(alpha: 0.6),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(
-          color: AppColorSchemes.light.onSurface.withOpacity(0.2),
+          color: AppColorSchemes.light.onSurface.withValues(alpha: 0.2),
         ),
       ),
     ),
   );
 
+  /// Provides dark theme data for the application.
   static ThemeData get darkTheme => ThemeData(
     colorScheme: AppColorSchemes.dark,
     scaffoldBackgroundColor: AppColorSchemes.dark.surface,
@@ -39,12 +42,12 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
-        color: AppColorSchemes.dark.onSurface.withOpacity(0.6),
+        color: AppColorSchemes.dark.onSurface.withValues(alpha: 0.6),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(
-          color: AppColorSchemes.dark.onSurface.withOpacity(0.2),
+          color: AppColorSchemes.dark.onSurface.withValues(alpha: 0.2),
         ),
       ),
     ),

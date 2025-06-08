@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
+/// Dashboard tile for displaying quick actions
 class DashboardTile extends StatelessWidget {
+  /// Creates an instance of [DashboardTile].
   const DashboardTile({
-    super.key,
     required this.icon,
     required this.title,
-    this.count,
     required this.gradient,
+    this.count,
+    super.key,
   });
 
+  /// Icon for the tile.
   final IconData icon;
+
+  /// Title for the tile.
   final String title;
+
+  /// Optional count for the tile, can be null.
   final String? count;
+
+  /// Gradient colors for the tile background.
   final List<Color> gradient;
 
   @override
@@ -25,7 +34,7 @@ class DashboardTile extends StatelessWidget {
           colors: gradient,
         ),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: colours.outline.withOpacity(0.1), width: 1),
+        border: Border.all(color: colours.outline.withValues(alpha: 0.1)),
       ),
       child: Material(
         color: Colors.transparent,
@@ -54,7 +63,7 @@ class DashboardTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: colours.primary.withOpacity(0.1),
+                        color: colours.primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(icon, color: colours.primary, size: 24),
@@ -95,14 +104,14 @@ class DashboardTile extends StatelessWidget {
                     Text(
                       'View details',
                       style: TextStyle(
-                        color: colours.onSurface.withOpacity(0.6),
+                        color: colours.onSurface.withValues(alpha: 0.6),
                         fontSize: 12,
                       ),
                     ),
                     const SizedBox(width: 4),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: colours.onSurface.withOpacity(0.6),
+                      color: colours.onSurface.withValues(alpha: 0.6),
                       size: 12,
                     ),
                   ],

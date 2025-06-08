@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Animated Background class used for the dashboard
 class AnimatedBackground extends StatelessWidget {
+  /// const constructor for [AnimatedBackground]
   const AnimatedBackground({super.key});
 
   @override
@@ -14,8 +16,8 @@ class AnimatedBackground extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             colours.surface,
-            colours.primary.withOpacity(0.03),
-            colours.secondary.withOpacity(0.02),
+            colours.primary.withValues(alpha: 0.03),
+            colours.secondary.withValues(alpha: 0.02),
           ],
         ),
       ),
@@ -27,22 +29,26 @@ class AnimatedBackground extends StatelessWidget {
   }
 }
 
+/// Custom painter for the geometric background
 class GeometricBackgroundPainter extends CustomPainter {
-  final ColorScheme colours;
-
+  /// Creates a [GeometricBackgroundPainter] with the given [colours].
   GeometricBackgroundPainter(this.colours);
+
+  /// Creates a [GeometricBackgroundPainter] with the given [colours].
+  final ColorScheme colours;
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint =
         Paint()
           ..style = PaintingStyle.fill
-          ..color = colours.primary.withOpacity(0.02);
+          ..color = colours.primary.withValues(alpha: 0.02);
 
-    canvas.drawCircle(Offset(size.width * 0.8, size.height * 0.2), 100, paint);
-    canvas.drawCircle(Offset(size.width * 0.2, size.height * 0.8), 80, paint);
+    canvas
+      ..drawCircle(Offset(size.width * 0.8, size.height * 0.2), 100, paint)
+      ..drawCircle(Offset(size.width * 0.2, size.height * 0.8), 80, paint);
 
-    paint.color = colours.secondary.withOpacity(0.01);
+    paint.color = colours.secondary.withValues(alpha: 0.01);
     canvas.drawCircle(Offset(size.width * 0.9, size.height * 0.7), 120, paint);
   }
 

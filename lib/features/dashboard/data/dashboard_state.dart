@@ -7,9 +7,7 @@ class DashboardState extends IState<DashboardState> {
 
   @override
   DashboardState copyWith({bool? isLoading}) {
-    return DashboardState(
-      isLoading: isLoading ?? this.isLoading,
-    );
+    return DashboardState(isLoading: isLoading ?? this.isLoading);
   }
 
   @override
@@ -17,7 +15,7 @@ class DashboardState extends IState<DashboardState> {
 
   @override
   DashboardState reset() {
-    // TODO: implement reset
+    // TODO(serwidlick): implement reset
     throw UnimplementedError();
   }
 }

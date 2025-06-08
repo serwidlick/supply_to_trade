@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
+/// LoginDropdown class used for the login page
 class LoginDropdown extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final String? selectedValue;
-  final List<String> options;
-  final ValueChanged<String?> onChanged;
-
+  /// Creates an instance of [LoginDropdown].
   const LoginDropdown({
-    super.key,
     required this.label,
     required this.icon,
     required this.selectedValue,
     required this.options,
     required this.onChanged,
+    super.key,
   });
+
+  /// Label for the dropdown field.
+  final String label;
+
+  /// Icon for the dropdown field.
+  final IconData icon;
+
+  /// Currently selected value in the dropdown.
+  final String? selectedValue;
+
+  /// List of options available in the dropdown.
+  final List<String> options;
+
+  /// Callback function to be called when the selected value changes.
+  final ValueChanged<String?> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +33,10 @@ class LoginDropdown extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: colours.surface.withOpacity(0.7),
+        color: colours.surface.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: colours.primary.withOpacity(0.12),
+          color: colours.primary.withValues(alpha: 0.12),
           width: 1.5,
         ),
       ),
@@ -49,7 +60,7 @@ class LoginDropdown extends StatelessWidget {
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           labelStyle: TextStyle(
-            color: colours.onSurface.withOpacity(0.7),
+            color: colours.onSurface.withValues(alpha: 0.7),
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:supply_to_trade/features/auth/presentation/forgot_password_button.dart';
+import 'package:supply_to_trade/features/auth/presentation/login_button.dart';
+import 'package:supply_to_trade/features/auth/presentation/login_dropdown.dart';
+import 'package:supply_to_trade/features/auth/presentation/login_text_field.dart';
 
-import 'forgot_password_button.dart';
-import 'login_button.dart';
-import 'login_dropdown.dart';
-import 'login_text_field.dart';
-
+/// LoginCard class used for the login page
 class LoginCard extends StatelessWidget {
+  /// Creates an instance of [LoginCard].
   const LoginCard({
-    super.key,
     required this.email,
     required this.password,
     required this.selectedBranch,
@@ -20,20 +20,43 @@ class LoginCard extends StatelessWidget {
     required this.onTogglePassword,
     required this.onLoginPressed,
     required this.onForgotPasswordPressed,
+    super.key,
   });
 
+  /// Email address entered by the user.
   final String? email;
+
+  /// Password entered by the user.
   final String? password;
+
+  /// Selected branch from the dropdown.
   final String? selectedBranch;
+
+  /// Whether the password field should show the password or not.
   final bool showPassword;
+
+  /// Whether the login button is in loading state.
   final bool isLoading;
+
+  /// Error message to display, if any.
   final String? error;
 
+  /// Callback function to handle email changes.
   final void Function(String) onEmailChanged;
+
+  /// Callback function to handle password changes.
   final void Function(String) onPasswordChanged;
+
+  /// Callback function to handle branch selection changes.
   final void Function(String?) onBranchChanged;
+
+  /// Callback function to toggle password visibility.
   final VoidCallback onTogglePassword;
+
+  /// Callback function to handle login button press.
   final VoidCallback onLoginPressed;
+
+  /// Callback function to handle forgot password button press.
   final VoidCallback onForgotPasswordPressed;
 
   @override
@@ -43,11 +66,11 @@ class LoginCard extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 380),
       child: Material(
-        color: colours.surfaceVariant,
+        color: colours.surfaceContainerHighest,
         elevation: 6,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(28),
-          side: BorderSide(color: colours.primary.withOpacity(0.08), width: 1),
+          side: BorderSide(color: colours.primary.withValues(alpha: 0.08)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(28),
@@ -102,9 +125,9 @@ class LoginCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colours.error.withOpacity(0.05),
+        color: colours.error.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: colours.error.withOpacity(0.2)),
+        border: Border.all(color: colours.error.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [

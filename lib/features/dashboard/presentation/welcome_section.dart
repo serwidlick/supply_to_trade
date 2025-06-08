@@ -1,6 +1,11 @@
+// Ignoring because its temporary and will be removed in the future.
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 
+/// WelcomeSection class used for displaying the welcome section in the dashboard
 class WelcomeSection extends StatelessWidget {
+  /// Creates an instance of [WelcomeSection].
   const WelcomeSection({super.key});
 
   @override
@@ -13,12 +18,12 @@ class WelcomeSection extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            colours.primary.withOpacity(0.1),
-            colours.primary.withOpacity(0.05),
+            colours.primary.withValues(alpha: 0.1),
+            colours.primary.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: colours.primary.withOpacity(0.1), width: 1),
+        border: Border.all(color: colours.primary.withValues(alpha: 0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +31,7 @@ class WelcomeSection extends StatelessWidget {
           Text(
             'Welcome back',
             style: TextStyle(
-              color: colours.onSurface.withOpacity(0.7),
+              color: colours.onSurface.withValues(alpha: 0.7),
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -44,7 +49,7 @@ class WelcomeSection extends StatelessWidget {
           Text(
             'Manage your quotes, orders, and stay connected',
             style: TextStyle(
-              color: colours.onSurface.withOpacity(0.6),
+              color: colours.onSurface.withValues(alpha: 0.6),
               fontSize: 14,
             ),
           ),

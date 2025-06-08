@@ -4,7 +4,9 @@ import 'package:supply_to_trade/features/dashboard/presentation/dashboard_grid.d
 import 'package:supply_to_trade/features/dashboard/presentation/notifications_section.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/welcome_section.dart';
 
+/// DashboardPage class used for the main dashboard screen
 class DashboardPage extends StatefulWidget {
+  /// Creates an instance of [DashboardPage].
   const DashboardPage({super.key});
 
   @override
@@ -24,7 +26,7 @@ class _DashboardPageState extends State<DashboardPage>
       duration: const Duration(milliseconds: 800),
       vsync: this,
     );
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
     _slideAnimation = Tween<Offset>(
@@ -62,8 +64,8 @@ class _DashboardPageState extends State<DashboardPage>
                   SliverToBoxAdapter(
                     child: SizedBox(height: AppBar().preferredSize.height + 60),
                   ),
-                  SliverPadding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                  const SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverToBoxAdapter(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,8 +98,8 @@ class _DashboardPageState extends State<DashboardPage>
             end: Alignment.bottomCenter,
             colors: [
               colours.surface,
-              colours.surface.withOpacity(0.95),
-              colours.surface.withOpacity(0.0),
+              colours.surface.withValues(alpha: 0.95),
+              colours.surface.withValues(alpha: 0),
             ],
           ),
         ),
@@ -105,7 +107,6 @@ class _DashboardPageState extends State<DashboardPage>
       title: FadeTransition(
         opacity: _fadeAnimation,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Hero(
               tag: 'logo',
@@ -127,7 +128,7 @@ class _DashboardPageState extends State<DashboardPage>
           child: Container(
             margin: const EdgeInsets.only(right: 16),
             decoration: BoxDecoration(
-              color: colours.surfaceVariant.withOpacity(0.8),
+              color: colours.surfaceContainerHighest.withValues(alpha: 0.8),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(

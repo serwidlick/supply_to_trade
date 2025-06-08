@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+/// ForgotPasswordButton class used for the login page
 class ForgotPasswordButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  /// Creates an instance of [ForgotPasswordButton].
+  const ForgotPasswordButton({required this.onPressed, super.key});
 
-  const ForgotPasswordButton({super.key, required this.onPressed});
+  /// Callback function to be called when the button is pressed.
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,12 @@
+// Ignoring because its temporary and will be removed in the future.
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/notification_card.dart';
 
+/// NotificationsSection class used for displaying recent activity notifications
 class NotificationsSection extends StatelessWidget {
+  /// Creates an instance of [NotificationsSection].
   const NotificationsSection({super.key});
 
   @override
@@ -45,7 +50,7 @@ class NotificationsSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
-        NotificationCard(
+        const NotificationCard(
           title: 'Order Received',
           message:
               'Thank you for your order, please wait 24 hours for a response',
@@ -53,7 +58,7 @@ class NotificationsSection extends StatelessWidget {
           time: '2 hours ago',
         ),
         const SizedBox(height: 12),
-        NotificationCard(
+        const NotificationCard(
           title: 'Quote Received',
           message:
               'Thank you for your quotation, please wait 24 hours for a response',

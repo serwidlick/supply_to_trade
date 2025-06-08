@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+/// LoginButton class used for the login page
 class LoginButton extends StatelessWidget {
-  final bool isLoading;
-  final VoidCallback onPressed;
-
+  /// Creates an instance of [LoginButton].
   const LoginButton({
-    super.key,
     required this.isLoading,
     required this.onPressed,
+    super.key,
   });
+
+  /// Loading property for the button to indicate if the button is in loading
+  /// state.
+  final bool isLoading;
+
+  /// Callback function to be called when the button is pressed.
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +28,14 @@ class LoginButton extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             colours.primary,
-            colours.primary.withOpacity(0.9),
-            colours.secondary.withOpacity(0.1),
+            colours.primary.withValues(alpha: 0.9),
+            colours.secondary.withValues(alpha: 0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: colours.primary.withOpacity(0.3),
+            color: colours.primary.withValues(alpha: 0.3),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),

@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 
+/// NotificationCard class used for displaying notifications
 class NotificationCard extends StatelessWidget {
-  final String title;
-  final String message;
-  final IconData icon;
-  final String time;
-
+  /// Creates an instance of [NotificationCard].
   const NotificationCard({
-    super.key,
     required this.title,
     required this.message,
     required this.icon,
     required this.time,
+    super.key,
   });
+
+  /// Title of the notification.
+  final String title;
+
+  /// Message of the notification.
+  final String message;
+
+  /// Icon representing the notification type.
+  final IconData icon;
+
+  /// Time when the notification was received.
+  final String time;
 
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: colours.surfaceVariant.withOpacity(0.5),
+        color: colours.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: colours.outline.withOpacity(0.1)),
+        border: Border.all(color: colours.outline.withValues(alpha: 0.1)),
       ),
       child: Material(
         color: Colors.transparent,
@@ -35,7 +44,7 @@ class NotificationCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: colours.primary.withOpacity(0.1),
+                    color: colours.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(icon, color: colours.primary, size: 20),
@@ -59,7 +68,7 @@ class NotificationCard extends StatelessWidget {
                           Text(
                             time,
                             style: TextStyle(
-                              color: colours.onSurface.withOpacity(0.5),
+                              color: colours.onSurface.withValues(alpha: 0.5),
                               fontSize: 12,
                             ),
                           ),
@@ -69,7 +78,7 @@ class NotificationCard extends StatelessWidget {
                       Text(
                         message,
                         style: TextStyle(
-                          color: colours.onSurface.withOpacity(0.7),
+                          color: colours.onSurface.withValues(alpha: 0.7),
                           fontSize: 13,
                           height: 1.3,
                         ),
