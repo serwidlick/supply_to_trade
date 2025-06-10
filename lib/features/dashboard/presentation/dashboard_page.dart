@@ -19,6 +19,8 @@ class _DashboardPageState extends State<DashboardPage>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
 
+  bool isDismissed = false;
+
   @override
   void initState() {
     super.initState();
@@ -64,16 +66,23 @@ class _DashboardPageState extends State<DashboardPage>
                   SliverToBoxAdapter(
                     child: SizedBox(height: AppBar().preferredSize.height + 60),
                   ),
-                  const SliverPadding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverToBoxAdapter(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         spacing: 32,
                         children: [
-                          WelcomeSection(),
-                          DashboardGrid(),
-                          NotificationsSection(),
+                          if (!isDismissed)
+                            WelcomeSection(
+                              onDismissed: () {
+                                setState(() {
+                                  isDismissed = true;
+                                });
+                              },
+                            ),
+                          const DashboardGrid(),
+                          const NotificationsSection(),
                         ],
                       ),
                     ),

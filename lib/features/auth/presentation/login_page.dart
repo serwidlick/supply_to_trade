@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:supply_to_trade/features/auth/cubit/login_cubit.dart';
 import 'package:supply_to_trade/features/auth/data/login_state.dart';
 import 'package:supply_to_trade/features/auth/presentation/animated_background.dart';
-import 'package:supply_to_trade/features/auth/presentation/animated_login_content.dart';
 import 'package:supply_to_trade/features/auth/presentation/login_card.dart';
 
 /// LoginPage class used for the login screen
@@ -20,6 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
   String? _selectedBranch;
+  late Future<void> _initFuture;
 
   @override
   Widget build(BuildContext context) {
@@ -43,51 +43,45 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const AnimatedBackground(),
                 SafeArea(
-                  child: AnimatedLoginContent(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Column(
-                        children: [
-                          TextButton(
-                            onPressed: () => context.go('/dashboard'),
-                            child: Text(
-                              'bypass login',
-                              style: TextStyle(
-                                color: colours.primary,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      children: [
+                        TextButton(
+                          onPressed: () => context.go('/dashboard'),
+                          child: Text(
+                            'bypass login',
+                            style: TextStyle(
+                              color: colours.primary,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const Spacer(flex: 2),
-                          _buildHeader(colours),
-                          const Spacer(flex: 2),
-                          LoginCard(
-                            email: state.email,
-                            password: state.password,
-                            selectedBranch: _selectedBranch,
-                            showPassword: _showPassword,
-                            isLoading: state.isLoading,
-                            error: state.error,
-                            onEmailChanged: cubit.updateEmail,
-                            onPasswordChanged: cubit.updatePassword,
-                            onBranchChanged:
-                                (value) =>
-                                    setState(() => _selectedBranch = value),
-                            onTogglePassword:
-                                () => setState(
-                                  () => _showPassword = !_showPassword,
-                                ),
-                            onLoginPressed: cubit.login,
-                            onForgotPasswordPressed: () {
-                              // TODO(serwidlick): Navigate to reset password
-                            },
-                          ),
-                          const Spacer(),
-                          _buildFooter(colours),
-                          const Spacer(),
-                        ],
-                      ),
+                        ),
+                        const Spacer(flex: 2),
+                        _buildHeader(colours),
+                        const Spacer(flex: 2),
+                        LoginCard(
+                          email: state.email,
+                          password: state.password,
+                          selectedBranch: _selectedBranch,
+                          showPassword: _showPassword,
+                          isLoading: state.isLoading,
+                          error: state.error,
+                          onEmailChanged: cubit.updateEmail,
+                          onPasswordChanged: cubit.updatePassword,
+                          onBranchChanged: cubit.updateBranch,
+                          onTogglePassword:
+                              () => setState(
+                                () => _showPassword = !_showPassword,
+                              ),
+                          onLoginPressed: cubit.login,
+                          onForgotPasswordPressed: () {
+                            // TODO(serwidlick): Navigate to reset password
+                          },
+                        ),
+                        const Spacer(),
+                      ],
                     ),
                   ),
                 ),
@@ -153,57 +147,6 @@ class _LoginPageState extends State<LoginPage> {
             fontWeight: FontWeight.w400,
           ),
           textAlign: TextAlign.center,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildFooter(ColorScheme colours) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                height: 1,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.transparent,
-                      colours.onSurface.withValues(alpha: 0.2),
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Supply 2 Trade',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: colours.primary,
-                  letterSpacing: 0.5,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: 1,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.transparent,
-                      colours.onSurface.withValues(alpha: 0.2),
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
         ),
       ],
     );

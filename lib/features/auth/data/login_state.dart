@@ -9,6 +9,7 @@ class LoginState extends IState<LoginState> {
     this.password = '',
     this.user,
     this.error,
+    this.selectedBranch = '',
     super.isLoading = false,
   });
 
@@ -20,6 +21,9 @@ class LoginState extends IState<LoginState> {
 
   /// user password
   final String password;
+
+  /// user branch
+  final String selectedBranch;
 
   /// stores potential error
   final String? error;
@@ -33,11 +37,13 @@ class LoginState extends IState<LoginState> {
     String? password,
     UserCredential? user,
     String? error,
+    String? selectedBranch,
     bool? isLoading,
   }) {
     return LoginState(
       email: email ?? this.email,
       password: password ?? this.password,
+      selectedBranch: selectedBranch ?? this.selectedBranch,
       error: error,
       user: user,
       isLoading: isLoading ?? this.isLoading,
@@ -45,7 +51,13 @@ class LoginState extends IState<LoginState> {
   }
 
   @override
-  List<Object?> get additionalProps => [user, email, password, error];
+  List<Object?> get additionalProps => [
+    user,
+    email,
+    password,
+    error,
+    selectedBranch,
+  ];
 
   /// Checks if the user is authenticated
   bool get isAuthenticated => user != null && user!.user != null;

@@ -48,7 +48,7 @@ class LoginCard extends StatelessWidget {
   final void Function(String) onPasswordChanged;
 
   /// Callback function to handle branch selection changes.
-  final void Function(String?) onBranchChanged;
+  final void Function(String) onBranchChanged;
 
   /// Callback function to toggle password visibility.
   final VoidCallback onTogglePassword;
@@ -104,7 +104,7 @@ class LoginCard extends StatelessWidget {
                   'Stoke',
                   'Telford',
                 ],
-                onChanged: onBranchChanged,
+                onChanged: (value) => onBranchChanged(value!),
               ),
               if (error != null) ...[
                 const SizedBox(height: 20),
