@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:supply_to_trade/shared/storage/storage_service.dart'
+    show StorageService;
 import 'package:url_launcher/url_launcher.dart';
 
 /// Contact us Page
@@ -22,6 +24,12 @@ class _ContactUsPageState extends State<ContactUsPage>
   @override
   void initState() {
     super.initState();
+
+    final storage = StorageService();
+    final branch = storage.get("branch", userId: storage.getLastUserId());
+
+    print('Branch: $branch');
+
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 1000),
       vsync: this,

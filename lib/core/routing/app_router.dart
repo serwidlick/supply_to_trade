@@ -6,11 +6,14 @@ import 'package:supply_to_trade/features/dashboard/presentation/dashboard_page.d
 import 'package:supply_to_trade/features/my_information/presentation/my_information_page.dart';
 import 'package:supply_to_trade/features/orders/presentation/orders_page.dart';
 import 'package:supply_to_trade/features/quotes/presentation/quotes_page.dart';
+import 'package:supply_to_trade/features/splash/presentation/splash_page.dart';
 
 /// The main application router for the Supply to Trade app.
 final GoRouter appRouter = GoRouter(
+  initialLocation: '/splash',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => const LoginPage()),
+    GoRoute(path: '/splash', builder: (context, state) => const SplashPage()),
+    GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
     GoRoute(
       path: '/dashboard',
       builder: (context, state) => const DashboardPage(),

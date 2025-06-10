@@ -19,7 +19,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
   String? _selectedBranch;
-  late Future<void> _initFuture;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                         TextButton(
                           onPressed: () => context.go('/dashboard'),
                           child: Text(
-                            'bypass login',
+                            'Bypass Login',
                             style: TextStyle(
                               color: colours.primary,
                               fontSize: 16,
