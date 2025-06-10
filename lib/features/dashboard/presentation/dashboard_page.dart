@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:supply_to_trade/features/dashboard/cubit/dashboard_cubit.dart';
+import 'package:supply_to_trade/features/dashboard/data/dashboard_state.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/dashboard_grid.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/notifications_section.dart';
 import 'package:supply_to_trade/features/dashboard/presentation/welcome_section.dart';
@@ -18,8 +22,6 @@ class _DashboardPageState extends State<DashboardPage>
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
-
-  bool isDismissed = false;
 
   @override
   void initState() {
@@ -54,44 +56,63 @@ class _DashboardPageState extends State<DashboardPage>
       backgroundColor: colours.surface,
       extendBodyBehindAppBar: true,
       appBar: _buildAppBar(colours),
-      body: AnimatedBuilder(
-        animation: _animationController,
-        builder: (context, child) {
-          return FadeTransition(
-            opacity: _fadeAnimation,
-            child: SlideTransition(
-              position: _slideAnimation,
-              child: CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: SizedBox(height: AppBar().preferredSize.height + 60),
-                  ),
-                  SliverPadding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    sliver: SliverToBoxAdapter(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 32,
-                        children: [
-                          if (!isDismissed)
-                            WelcomeSection(
-                              onDismissed: () {
-                                setState(() {
-                                  isDismissed = true;
-                                });
-                              },
+      body: BlocProvider(
+        create: (context) {
+          final cubit = DashboardCubit()..init();
+          return cubit;
+        },
+        child: BlocBuilder<DashboardCubit, DashboardState>(
+          builder: (context, state) {
+            if (state.isLoading) {
+              return Center(
+                child: SpinKitDualRing(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              );
+            }
+            return AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: SlideTransition(
+                    position: _slideAnimation,
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: AppBar().preferredSize.height + 60,
+                          ),
+                        ),
+                        SliverPadding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          sliver: SliverToBoxAdapter(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              spacing: 32,
+                              children: [
+                                if (!state.hasDismissedWelcome)
+                                  WelcomeSection(
+                                    onDismissed: () {
+                                      context
+                                          .read<DashboardCubit>()
+                                          .setDismissedWelcome(true);
+                                    },
+                                  ),
+                                const DashboardGrid(),
+                                const NotificationsSection(),
+                              ],
                             ),
-                          const DashboardGrid(),
-                          const NotificationsSection(),
-                        ],
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          );
-        },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
